@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════════════════
+  MARCA-DE-AUTORIA-EA-626111
+
+  EXPEDICIÓN ALGORÍTMICA
+  Algoritmos y Programación · Código 626111
+  Programa de Ingeniería en Energías · Facultad de Ingenierías
+  Universidad de La Guajira · Riohacha, La Guajira, Colombia
+
+  Autor y titular de los derechos morales de la obra:
+
+        A S L I N   G O N Z A L O   B O T E L L O   P L A T A
+        Docente de planta · Facultad de Ingenierías
+
+  Material didáctico de apoyo al plan de aula. Uso académico.
+  Se permite la reproducción total o parcial con fines docentes,
+  citando la fuente y conservando esta atribución.
+
+  Este bloque es una marca de autoría: no se muestra en pantalla, no se
+  ejecuta y no interviene en el funcionamiento ni en el diseño de la
+  página. Puede comprobarse abriendo el archivo con cualquier editor.
+  ════════════════════════════════════════════════════════════════════════
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<!-- MARCA-DE-AUTORIA-EA-626111 · metadatos de autoría, sin efecto visual ni funcional -->
+<meta name="author" content="Aslin Gonzalo Botello Plata">
+<meta name="copyright" content="© 2026 Aslin Gonzalo Botello Plata · Universidad de La Guajira">
+<meta name="dcterms.creator" content="Aslin Gonzalo Botello Plata">
+<meta name="dcterms.rightsHolder" content="Aslin Gonzalo Botello Plata">
+<meta name="dcterms.publisher" content="Universidad de La Guajira · Facultad de Ingenierías">
+<meta name="dcterms.rights" content="Material didáctico de uso académico. Reproducción permitida con fines docentes citando la fuente.">
+<meta name="dcterms.isPartOf" content="Expedición Algorítmica · Algoritmos y Programación 626111">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Expedición Algorítmica · Algoritmos y Programación 626111</title>
+<meta name="description" content="Las nueve misiones de Algoritmos y Programación 626111. Ingeniería en Energías, Universidad de La Guajira. Funciona sin conexión.">
+<meta name="author" content="Aslin Gonzalo Botello Plata">
+<meta name="theme-color" content="#f7f1e8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23102b45'/%3E%3Ccircle cx='32' cy='32' r='13' fill='none' stroke='%2308a6bd' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23f2b134'/%3E%3C/svg%3E">
+
+<style>
+/* ═══════════════════════════════════════════════ 1 · SISTEMA VISUAL ═══
+   Una sola tipografía en toda la página: Times New Roman, la misma del
+   libro de trabajo. Todo va incrustado: sin fuentes, sin imágenes y sin
+   scripts externos. Las diez ilustraciones son SVG dibujado aquí mismo. */
+:root{
+  --papel:#f7f1e8; --papel-claro:#fffdf8;
+  --tinta:#102b45; --texto:#243746; --suave:#5f7183;
+  --cyan:#08a6bd; --cyan-osc:#066f80;
+  --oro:#f2b134;  --oro-osc:#b0790c;
+  --purpura:#7257d6; --purpura-osc:#5a44b8;
+  --verde:#43b888; --verde-osc:#2c7457;
+  --linea:rgba(36,55,70,.11);
+  --sombra:0 34px 74px -24px rgba(16,43,69,.34);
+  --sombra-baja:0 16px 36px -16px rgba(16,43,69,.26);
+  --radio:26px;
+  --letra:"Times New Roman",Times,Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:var(--texto);
+  font-family:var(--letra); font-size:18px; line-height:1.5;
+  background:var(--papel); overflow-x:hidden; display:flex; flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2{font-family:var(--letra); color:var(--tinta); margin:0; line-height:1.14; font-weight:700}
+p{margin:0}
+svg{display:block}
+.oculto{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap}
+/* Versalitas: en Times necesitan algo más de espaciado para respirar */
+.vers{font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:700}
+
+/* ── Auroras: tres manchas de color que respiran muy despacio ────────── */
+.aurora{position:fixed; inset:-22vmax; z-index:0; pointer-events:none; filter:blur(68px); opacity:.6}
+.aurora i{position:absolute; display:block; border-radius:50%; mix-blend-mode:multiply}
+.a1{width:44vmax;height:44vmax;left:1%;top:-6%;   background:radial-gradient(circle,rgba(8,166,189,.44),transparent 68%); animation:flotar1 27s ease-in-out infinite}
+.a2{width:40vmax;height:40vmax;right:1%;top:8%;   background:radial-gradient(circle,rgba(242,177,52,.42),transparent 68%); animation:flotar2 33s ease-in-out infinite}
+.a3{width:48vmax;height:48vmax;left:26%;bottom:-6%;background:radial-gradient(circle,rgba(114,87,214,.32),transparent 68%); animation:flotar3 38s ease-in-out infinite}
+@keyframes flotar1{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(6vmax,4vmax,0) scale(1.12)}}
+@keyframes flotar2{0%,100%{transform:translate3d(0,0,0) scale(1.06)}50%{transform:translate3d(-5vmax,6vmax,0) scale(.93)}}
+@keyframes flotar3{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(4vmax,-5vmax,0) scale(1.1)}}
+
+/* ── Grano de papel, dibujado con CSS ────────────────────────────────── */
+body::after{
+  content:""; position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.4;
+  background-image:radial-gradient(rgba(36,55,70,.13) .9px, transparent 1px);
+  background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(125% 92% at 50% 0%, #000 18%, transparent 76%);
+          mask-image:radial-gradient(125% 92% at 50% 0%, #000 18%, transparent 76%);
+}
+
+/* Una sola columna para todo: portada, panorama, avance y misiones
+   comparten exactamente el mismo ancho. */
+.marco{position:relative; z-index:2; width:min(1180px,100%); margin-inline:auto; padding-inline:clamp(18px,5vw,40px); flex:1 0 auto}
+.salta{position:absolute; left:-9999px; top:0; background:var(--tinta); color:#fff; padding:12px 20px; border-radius:0 0 14px 0; z-index:99; text-decoration:none}
+.salta:focus{left:0}
+:focus-visible{outline:3px solid var(--cyan-osc); outline-offset:4px; border-radius:12px}
+
+/* ═══════════════════════════════════════════════ 2 · PORTADA ════════ */
+.cinta{position:fixed; inset:0 0 auto; height:5px; z-index:5;
+  background:linear-gradient(90deg,var(--cyan) 0 28%,var(--oro) 28% 56%,var(--purpura) 56% 80%,var(--verde) 80% 100%)}
+
+.portada{text-align:center; padding:clamp(62px,10vw,116px) 0 0}
+
+/* El título va dibujado como SVG y no como texto corriente: así ocupa
+   exactamente el ancho de la columna en una sola línea, sea cual sea la
+   pantalla. textLength fija la medida aunque el navegador sustituya la
+   fuente. El texto accesible viaja en el <span> oculto del encabezado. */
+.titulo{margin:0; line-height:0}
+.titulo svg{width:100%; height:auto; overflow:visible}
+
+.filigrana{display:flex; align-items:center; justify-content:center; gap:15px; margin:clamp(18px,2.8vw,28px) auto 0; max-width:330px; color:var(--oro-osc)}
+.filigrana i{flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(36,55,70,.3))}
+.filigrana i+i{background:linear-gradient(270deg,transparent,rgba(36,55,70,.3))}
+.filigrana svg{width:18px; height:18px; flex:none}
+
+.sumario{margin:clamp(18px,2.8vw,26px) auto 0; max-width:56ch;
+  font-size:clamp(18px,2vw,21px); color:var(--suave); line-height:1.6}
+.sumario b{color:var(--tinta); font-weight:700}
+
+/* ── Bloques de ancho completo: panorama y panel de avance ───────────── */
+.bloque{margin-top:clamp(28px,4.4vw,48px); border-radius:var(--radio); border:1px solid var(--linea); box-shadow:var(--sombra)}
+.panorama{overflow:hidden; line-height:0}
+.panorama svg{width:100%; height:auto}
+
+/* ═══════════════════════════════════════════════ 3 · AVANCE ═════════ */
+.avance{
+  background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,253,248,.98));
+  box-shadow:var(--sombra-baja);
+  -webkit-backdrop-filter:blur(11px); backdrop-filter:blur(11px);
+  padding:clamp(22px,3vw,30px) clamp(22px,3.4vw,36px);
+  display:grid; grid-template-columns:auto 1fr; gap:clamp(20px,3.4vw,40px); align-items:center;
+}
+.anillo{position:relative; width:126px; height:126px; flex:none}
+.anillo svg{width:100%; height:100%; transform:rotate(-90deg)}
+.anillo .aro{transition:stroke-dashoffset .9s cubic-bezier(.2,.7,.3,1)}
+.anillo-txt{position:absolute; inset:0; display:grid; place-content:center; text-align:center; line-height:1.15}
+.anillo-txt b{display:block; font-size:32px; color:var(--tinta); font-weight:700}
+.anillo-txt i{display:block; font-style:normal; font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--suave); font-weight:700; margin-top:3px}
+
+.medidores{display:grid; gap:15px; min-width:0}
+.fila{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.fila .etq{min-width:104px; color:var(--suave); font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:700}
+.barra{flex:1 1 180px; height:9px; border-radius:99px; background:rgba(36,55,70,.10); overflow:hidden; min-width:120px}
+.barra i{display:block; height:100%; width:0; border-radius:99px;
+  background:linear-gradient(90deg,#0aa9c0,#7257d6); transition:width .9s cubic-bezier(.2,.7,.3,1)}
+.fila .val{min-width:74px; text-align:right; font-weight:700; color:var(--tinta); font-size:17px}
+
+.pasaporte{display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none}
+/* Cada marca lleva el color de su unidad, igual que la tarjeta de la misión:
+   así se sabe a cuál corresponde sin necesidad de numerarlas. */
+.marca{
+  width:38px; height:38px; border-radius:12px; display:grid; place-items:center;
+  border:1.6px dashed var(--m); background:rgba(255,255,255,.5); color:#fff;
+  transition:transform .3s ease, background-color .3s ease, border-color .3s ease;
+}
+.marca .punto{width:9px; height:9px; border-radius:50%; background:var(--m); opacity:.5}
+.marca.ganada{border-style:solid; border-color:transparent; background:var(--m);
+  box-shadow:var(--sombra-baja); transform:translateY(-2px)}
+.marca svg{width:15px; height:15px}
+
+/* ═══════════════════════════════════════════════ 4 · MISIONES ═══════ */
+.rejilla{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(min(318px,100%),1fr));
+  gap:clamp(20px,2.6vw,30px); list-style:none; padding:0;
+  margin:clamp(28px,4.4vw,48px) 0 clamp(38px,6vw,70px);
+}
+.mision{opacity:0; transform:translateY(28px); transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.3,1)}
+.mision.entra{opacity:1; transform:none}
+
+.carta{
+  position:relative; display:flex; flex-direction:column; height:100%; overflow:hidden; isolation:isolate;
+  border-radius:var(--radio); text-decoration:none; color:inherit;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,253,248,1));
+  border:1px solid var(--linea); box-shadow:var(--sombra-baja);
+  transition:transform .36s cubic-bezier(.2,.7,.3,1), box-shadow .36s ease, border-color .36s ease;
+}
+.carta:hover,.carta:focus-visible{transform:translateY(-9px); box-shadow:var(--sombra); border-color:var(--tono-borde)}
+
+.carta::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; opacity:0; z-index:3;
+  background:radial-gradient(125% 78% at 50% 0%, var(--tono-halo), transparent 60%);
+  transition:opacity .36s ease;
+}
+.carta:hover::after,.carta:focus-visible::after{opacity:1}
+
+.carta::before{
+  content:""; position:absolute; inset:0; z-index:4; pointer-events:none; opacity:0;
+  background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.55) 50%,transparent 62%);
+  transform:translateX(-120%);
+}
+.carta:hover::before{opacity:1; animation:destello .95s ease forwards}
+@keyframes destello{to{transform:translateX(120%)}}
+
+.escena{position:relative; display:block; overflow:hidden; background:var(--tono-cielo); line-height:0}
+.escena svg{width:100%; height:auto; transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.carta:hover .escena svg,.carta:focus-visible .escena svg{transform:scale(1.05)}
+.escena::after{content:""; position:absolute; inset:auto 0 -1px; height:38%;
+  background:linear-gradient(180deg,transparent,rgba(255,253,248,.99))}
+
+.laurel{
+  position:absolute; right:16px; top:17px; z-index:5; display:none; align-items:center; gap:6px;
+  padding:6px 13px 6px 9px; border-radius:999px; background:var(--tono-osc); color:#fff;
+  font-size:11px; letter-spacing:.13em; text-transform:uppercase; font-weight:700;
+  box-shadow:0 10px 22px -9px rgba(16,43,69,.6);
+}
+.laurel svg{width:12px; height:12px}
+.carta.lista .laurel{display:inline-flex}
+
+.cuerpo{position:relative; z-index:5; padding:2px 24px 0; flex:1; margin-top:-14px}
+.cuerpo h2{font-size:clamp(23px,2.5vw,26px); letter-spacing:-.012em}
+.lema{margin-top:6px; font-size:16px; color:var(--suave); line-height:1.4; min-height:2.5em}
+.sello{
+  display:inline-block; margin-top:13px; padding:5px 14px; border-radius:999px;
+  background:var(--tono-suave); color:var(--tono-osc);
+  font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:700;
+}
+
+.pie{position:relative; z-index:5; padding:19px 24px 22px; margin-top:19px; border-top:1px solid rgba(36,55,70,.075)}
+.tramos{display:flex; gap:5px; margin-bottom:13px}
+.tramo{flex:1; height:7px; border-radius:99px; background:rgba(36,55,70,.10); position:relative; overflow:hidden}
+.tramo i{position:absolute; inset:0; border-radius:99px; background:var(--tono-osc);
+  transform:scaleX(0); transform-origin:left; transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.mision.entra .tramo.hecho i{transform:scaleX(1)}
+.tramo.actual{background:var(--tono-suave); box-shadow:inset 0 0 0 1.6px var(--tono)}
+
+.estado{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.estado .txt{font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--suave)}
+.carta.curso .estado .txt{color:var(--tono-osc)}
+.carta.lista .estado .txt{color:var(--verde-osc)}
+.ir{display:inline-flex; align-items:center; gap:7px; font-size:16px; font-weight:700; color:var(--tinta)}
+.ir svg{width:16px; height:16px; transition:transform .3s ease}
+.carta:hover .ir svg,.carta:focus-visible .ir svg{transform:translateX(4px)}
+
+/* ═══════════════════════════════════════════════ 5 · AUTORÍA ════════ */
+.autoria{
+  position:relative; z-index:2; flex:none; width:min(1180px,100%); margin-inline:auto;
+  padding:0 clamp(18px,5vw,40px) clamp(28px,4vw,42px); display:flex; justify-content:flex-end;
+}
+.autoria p{text-align:right; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--suave); font-weight:700}
+.autoria b{display:block; margin-top:4px; font-size:19px; letter-spacing:.005em;
+  text-transform:none; color:var(--tinta); font-weight:700}
+
+/* ═══════════════════════════════════════════════ 6 · AJUSTES ════════ */
+@media (max-width:680px){
+  /* En vertical el rótulo pasa arriba y la barra comparte fila con la cifra:
+     así el panel no se estira de más. */
+  .avance{grid-template-columns:1fr; justify-items:center; text-align:center; gap:22px}
+  .anillo{width:112px; height:112px}
+  .anillo-txt b{font-size:29px}
+  .medidores{width:100%; gap:16px}
+  .fila{display:grid; grid-template-columns:1fr auto; gap:7px 12px; align-items:center; width:100%}
+  .fila .etq{grid-column:1 / -1; text-align:center; min-width:auto}
+  .barra{flex:none; width:100%; min-width:0}
+  .fila .val{min-width:auto; text-align:right}
+  .pasaporte{grid-column:1 / -1; justify-content:center}
+}
+@media (max-width:560px){
+  .autoria{justify-content:center}
+  .autoria p{text-align:center}
+  .bloque{border-radius:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important; transition-duration:.001ms !important}
+  .mision{opacity:1; transform:none}
+  .mision .tramo.hecho i{transform:scaleX(1)}
+  .carta:hover,.carta:focus-visible{transform:none}
+}
+@media print{
+  .aurora,body::after,.cinta{display:none}
+  .carta{box-shadow:none; border-color:#c8ced3; break-inside:avoid}
+  .rejilla{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+<div class="cinta" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+<a class="salta" href="#misiones">Saltar a las misiones</a>
+
+<div class="marco">
+
+  <header class="portada">
+    <h1 class="titulo">
+      <span class="oculto">Expedición Algorítmica</span>
+      <svg viewBox="0 14 1893 238" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="gTit" gradientUnits="userSpaceOnUse" x1="935" y1="0" x2="1893" y2="0">
+            <stop offset="0" stop-color="#0aa9c0"></stop>
+            <stop offset=".52" stop-color="#2f76d2"></stop>
+            <stop offset="1" stop-color="#7257d6"></stop>
+          </linearGradient>
+        </defs>
+        <text x="0" y="200" font-family="&quot;Times New Roman&quot;,Times,Georgia,serif" font-weight="700"
+              font-size="200" textLength="1893" lengthAdjust="spacing"><tspan fill="#102b45">Expedición </tspan><tspan fill="url(#gTit)">Algorítmica</tspan></text>
+      </svg>
+    </h1>
+
+    <p class="filigrana" aria-hidden="true">
+      <i></i>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.6l2.7 5.8 6.3.8-4.6 4.4 1.2 6.3L12 16.9 6.4 19.9l1.2-6.3L3 9.2l6.3-.8z"></path>
+      </svg>
+      <i></i>
+    </p>
+
+    <p class="sumario">Nueve misiones para aprender a programar resolviendo problemas reales de energía. Cada una se juega en el navegador, tiene <b>cinco niveles</b> y guarda su progreso <b>sin conexión</b>.</p>
+
+    <div class="bloque panorama" id="panorama"></div>
+  </header>
+
+  <section class="bloque avance" aria-labelledby="t-avance">
+    <h2 class="oculto" id="t-avance">Mi avance en la expedición</h2>
+
+    <div class="anillo">
+      <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+        <!-- El degradado va de arriba abajo para que el arco arranque en cian
+             y no en púrpura cuando el avance todavía es pequeño. -->
+        <defs><linearGradient id="gAro" gradientUnits="userSpaceOnUse" x1="60" y1="6" x2="60" y2="114">
+          <stop offset="0" stop-color="#0aa9c0"></stop><stop offset="1" stop-color="#7257d6"></stop>
+        </linearGradient></defs>
+        <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(36,55,70,.10)" stroke-width="11"></circle>
+        <circle class="aro" id="aro" cx="60" cy="60" r="52" fill="none" stroke="url(#gAro)" stroke-width="11"
+                stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+      </svg>
+      <span class="anillo-txt"><b id="pct">0 %</b><i>completado</i></span>
+    </div>
+
+    <div class="medidores">
+      <div class="fila">
+        <span class="etq">Niveles</span>
+        <span class="barra"><i id="bNiv"></i></span>
+        <b class="val" id="vNiv">0 / 45</b>
+      </div>
+      <div class="fila">
+        <span class="etq">Misiones</span>
+        <span class="barra"><i id="bMis"></i></span>
+        <b class="val" id="vMis">0 / 9</b>
+      </div>
+      <div class="fila">
+        <span class="etq">Insignias</span>
+        <ul class="pasaporte" id="pasaporte"></ul>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <h2 class="oculto" id="misiones">Las nueve misiones</h2>
+    <ul class="rejilla" id="rejilla"></ul>
+  </main>
+</div>
+
+<footer class="autoria">
+  <p>Autor<b>Aslin Gonzalo Botello Plata</b></p>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ═════════════════════════════════════════ 1 · PALETA POR UNIDAD */
+  var TONOS = {
+    1:{ base:"#08a6bd", osc:"#066f80", suave:"rgba(8,166,189,.13)",  halo:"rgba(8,166,189,.17)",
+        borde:"rgba(8,166,189,.45)",  cielo:"#dff2f4", c1:"#9ae2e9", c2:"#3fb9cc", c3:"#0b7385" },
+    2:{ base:"#f2b134", osc:"#b0790c", suave:"rgba(242,177,52,.18)", halo:"rgba(242,177,52,.20)",
+        borde:"rgba(242,177,52,.55)", cielo:"#fbeed3", c1:"#f9dfa8", c2:"#edb249", c3:"#b8800f" },
+    3:{ base:"#7257d6", osc:"#5a44b8", suave:"rgba(114,87,214,.13)", halo:"rgba(114,87,214,.18)",
+        borde:"rgba(114,87,214,.45)", cielo:"#e9e4fb", c1:"#c9bdf3", c2:"#8f78e0", c3:"#5741ae" },
+    4:{ base:"#43b888", osc:"#2c7457", suave:"rgba(67,184,136,.15)", halo:"rgba(67,184,136,.19)",
+        borde:"rgba(67,184,136,.50)", cielo:"#ddf3e9", c1:"#abe5cb", c2:"#5cc79a", c3:"#2a8262" }
+  };
+
+  /* ═════════════════════════════════════════ 2 · LAS NUEVE MISIONES */
+  var M = [
+    { n:1, u:1, archivo:"M1-ruta-solar.html",            clave:"expedicion-algoritmica-ruta-solar-v1-2-chat-cert",
+      nombre:"Ruta Solar",            lema:"Del problema al algoritmo",              sello:"Unidad 01 · Semanas 1 y 2" },
+    { n:2, u:1, archivo:"M2-semaforo-de-carga.html",     clave:"expedicion-algoritmica-semaforo-carga-v1",
+      nombre:"Semáforo de Carga",     lema:"Decidir con umbrales",                   sello:"Unidad 01 · Semanas 3 y 4" },
+    { n:3, u:1, archivo:"M3-centinelas-del-viento.html", clave:"centinelas-viento-v1.0",
+      nombre:"Centinelas del Viento", lema:"Domar los ciclos",                       sello:"Unidad 01 · Semanas 5 y 6" },
+    { n:4, u:2, archivo:"M4-fabrica-modular.html",       clave:"fabrica-modular-v1.0",
+      nombre:"Fábrica Modular",       lema:"Funciones con contrato",                 sello:"Unidad 02 · Semana 7" },
+    { n:5, u:2, archivo:"M5-boveda-de-mediciones.html",  clave:"boveda-mediciones-v1.0",
+      nombre:"Bóveda de Mediciones",  lema:"Listas, registros y calidad de datos",   sello:"Unidad 02 · Semanas 8 y 9" },
+    { n:6, u:2, archivo:"M6-rally-algoritmico.html",     clave:"rally-algoritmico-v1.0",
+      nombre:"Rally Algorítmico",     lema:"Búsqueda y ordenación",                  sello:"Unidad 02 · Semanas 10 y 11" },
+    { n:7, u:3, archivo:"M7-ecociudad-de-objetos.html",  clave:"eco-ciudad-objetos-626111-v1-1",
+      nombre:"EcoCiudad de Objetos",  lema:"Modelar con clases y objetos",           sello:"Unidad 03 · Semana 12" },
+    { n:8, u:3, archivo:"M8-detectives-del-codigo.html", clave:"detectives-codigo-ia-control-626111-v1",
+      nombre:"Detectives del Código", lema:"Inteligencia artificial bajo control",   sello:"Unidad 03 · Semanas 13 y 14" },
+    { n:9, u:4, archivo:"M9-guajira-energy-lab.html",    clave:"guajira-energy-lab-626111-v1",
+      nombre:"Guajira Energy Lab",    lema:"Proyecto integrador",                    sello:"Unidad 04 · Semanas 15 y 16" }
+  ];
+
+  /* ═════════════════════════════════════════ 3 · ILUSTRACIONES
+     Nueve escenas dibujadas en SVG. Comparten cielo, sol y horizonte;
+     cambian el color rector de la unidad y los objetos del primer plano. */
+  var W = 320, H = 158;
+
+  function defs(id, t){
+    return '<defs>'
+      + '<linearGradient id="c'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+t.cielo+'"/><stop offset="1" stop-color="#fffdf8"/></linearGradient>'
+      + '<linearGradient id="s'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe0a0"/><stop offset="1" stop-color="'+t.base+'"/></linearGradient>'
+      + '<linearGradient id="d'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+t.c1+'"/><stop offset="1" stop-color="'+t.c2+'"/></linearGradient>'
+      + '<linearGradient id="e'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+t.c2+'"/><stop offset="1" stop-color="'+t.c3+'"/></linearGradient>'
+      + '</defs>';
+  }
+  function cielo(id, t, solX, solY){
+    var x = solX || 254, y = solY || 40;
+    return defs(id,t)
+      + '<rect width="'+W+'" height="'+H+'" fill="url(#c'+id+')"/>'
+      + '<circle cx="'+x+'" cy="'+y+'" r="23" fill="url(#s'+id+')" opacity=".9"/>'
+      + '<circle cx="'+x+'" cy="'+y+'" r="33" fill="none" stroke="'+t.base+'" stroke-opacity=".22" stroke-width="1.2"/>'
+      + '<circle cx="'+x+'" cy="'+y+'" r="43" fill="none" stroke="'+t.base+'" stroke-opacity=".11" stroke-width="1"/>';
+  }
+  function duna(color, y, op){
+    return '<path d="M0 '+y+' C 54 '+(y-15)+', 98 '+(y+9)+', 154 '+(y-6)+' S 256 '+(y-19)+', 320 '+(y-3)+' L320 '+H+' L0 '+H+' Z" fill="'+color+'" opacity="'+op+'"/>';
+  }
+  function suelo(t){
+    return '<path d="M0 149 H320" stroke="'+t.c3+'" stroke-opacity=".26" stroke-width="1.4"/>';
+  }
+
+  var ESCENA = {
+    /* 1 · Ruta Solar — tres paneles inclinados frente al sol */
+    1:function(t,id){
+      var s = cielo(id,t,248,46) + duna(t.c1,106,.5) + duna(t.c2,122,.44);
+      var P = [[16,124,86,26],[106,118,72,22],[188,112,58,18]];
+      function lerp(a,b,f){ return [(a[0]+(b[0]-a[0])*f).toFixed(1), (a[1]+(b[1]-a[1])*f).toFixed(1)]; }
+      for(var i=0;i<P.length;i++){
+        var x=P[i][0], y=P[i][1], w=P[i][2], h=P[i][3], dx=w*0.26;
+        var A=[x,y], B=[x+w,y], D=[x+dx*0.2,y-h], C=[x+w-dx,y-h];
+        s += '<g opacity="'+(1-i*0.09)+'">'
+          +  '<path d="M'+A[0]+' '+A[1]+' L'+B[0]+' '+B[1]+' L'+C[0]+' '+C[1]+' L'+D[0]+' '+D[1]+' Z" fill="url(#e'+id+')"/>';
+        [0.25,0.5,0.75].forEach(function(f){
+          var p1=lerp(A,B,f), p2=lerp(D,C,f);
+          s += '<path d="M'+p1[0]+' '+p1[1]+' L'+p2[0]+' '+p2[1]+'" stroke="#fffdf8" stroke-opacity=".42" stroke-width="1"/>';
+        });
+        var m1=lerp(A,D,0.5), m2=lerp(B,C,0.5);
+        s += '<path d="M'+m1[0]+' '+m1[1]+' L'+m2[0]+' '+m2[1]+'" stroke="#fffdf8" stroke-opacity=".38" stroke-width="1"/>'
+          +  '<path d="M'+(x+w*0.52).toFixed(1)+' '+y+' l-2 12" stroke="'+t.c3+'" stroke-width="3.2" stroke-linecap="round" opacity=".85"/>'
+          +  '<path d="M'+(x+w*0.52-9).toFixed(1)+' '+(y+12)+' h18" stroke="'+t.c3+'" stroke-width="2.4" stroke-linecap="round" opacity=".65"/>'
+          +  '</g>';
+      }
+      return s + suelo(t);
+    },
+
+    /* 2 · Semáforo de Carga — batería, umbral y tres estados */
+    2:function(t,id){
+      var s = cielo(id,t) + duna(t.c1,112,.46) + duna(t.c2,128,.4);
+      s += '<g transform="translate(30,54)">'
+        +  '<rect x="0" y="0" width="92" height="48" rx="13" fill="#fffdf8" opacity=".96" stroke="'+t.c3+'" stroke-width="2.4"/>'
+        +  '<rect x="94" y="17" width="7" height="14" rx="3.4" fill="'+t.c3+'" opacity=".9"/>'
+        +  '<rect x="9" y="9" width="27" height="30" rx="7" fill="#43b888"/>'
+        +  '<rect x="40" y="9" width="27" height="30" rx="7" fill="#f2b134" opacity=".9"/>'
+        +  '<rect x="71" y="9" width="12" height="30" rx="6" fill="'+t.c1+'" opacity=".5"/>'
+        +  '</g>';
+      s += '<g transform="translate(186,40)">'
+        +  '<rect x="0" y="0" width="42" height="90" rx="16" fill="'+t.c3+'" opacity=".14"/>'
+        +  '<rect x="0" y="0" width="42" height="90" rx="16" fill="none" stroke="'+t.c3+'" stroke-width="2" stroke-opacity=".5"/>'
+        +  '<circle cx="21" cy="21" r="10.5" fill="#c84f47"/>'
+        +  '<circle cx="21" cy="45" r="10.5" fill="#f2b134"/>'
+        +  '<circle cx="21" cy="69" r="10.5" fill="#43b888"/>'
+        +  '</g>';
+      return s + suelo(t);
+    },
+
+    /* 3 · Centinelas del Viento — tres aerogeneradores */
+    3:function(t,id){
+      var s = cielo(id,t,246,36) + duna(t.c1,114,.46) + duna(t.c2,130,.4);
+      var T = [[58,48,.92],[136,30,1.24],[208,54,.82]];
+      for(var i=0;i<T.length;i++){
+        var x=T[i][0], y=T[i][1], k=T[i][2];
+        s += '<g opacity="'+(.74+i*.08)+'">'
+          +  '<path d="M'+x+' 134 L'+(x-3.4*k).toFixed(1)+' '+y+' h'+(6.8*k).toFixed(1)+' Z" fill="'+t.c3+'"/>'
+          +  '<g transform="translate('+x+','+y+') scale('+k+')">'
+          +    '<path d="M0 0 L2.4 -31 L-2.4 -31 Z" fill="url(#e'+id+')"/>'
+          +    '<path d="M0 0 L28 14 L25 18.6 Z" fill="url(#e'+id+')"/>'
+          +    '<path d="M0 0 L-28 14 L-25 18.6 Z" fill="url(#e'+id+')"/>'
+          +    '<circle r="3.6" fill="#fffdf8" stroke="'+t.c3+'" stroke-width="1.5"/>'
+          +  '</g></g>';
+      }
+      return s + suelo(t);
+    },
+
+    /* 4 · Fábrica Modular — cuatro módulos encadenados y un engranaje */
+    4:function(t,id){
+      var s = cielo(id,t) + duna(t.c1,118,.42) + duna(t.c2,132,.36);
+      s += '<path d="M46 100 H250" stroke="'+t.c3+'" stroke-opacity=".3" stroke-width="3.4" stroke-linecap="round"/>';
+      var B = [[24,84],[80,68],[136,92],[192,74]];
+      for(var i=0;i<B.length;i++){
+        var x=B[i][0], y=B[i][1], w=46;
+        s += '<g>'
+          +  '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+(134-y)+'" rx="9" fill="url(#d'+id+')" opacity=".92"/>'
+          +  '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+(134-y)+'" rx="9" fill="none" stroke="'+t.c3+'" stroke-opacity=".42" stroke-width="1.4"/>'
+          +  '<circle cx="'+(x+w/2)+'" cy="'+(y+16)+'" r="7.5" fill="#fffdf8" opacity=".9"/>'
+          +  '<circle cx="'+(x+w/2)+'" cy="'+(y+16)+'" r="3.2" fill="'+t.c3+'"/>'
+          +  '</g>';
+      }
+      s += '<g transform="translate(258,58)">';
+      for(var g=0; g<8; g++){
+        s += '<rect x="-3.2" y="-26" width="6.4" height="8" rx="2.2" fill="'+t.c3+'" opacity=".85" transform="rotate('+(g*45)+')"/>';
+      }
+      s += '<circle r="18" fill="url(#e'+id+')"/><circle r="7" fill="#fffdf8" opacity=".92"/></g>';
+      return s + suelo(t);
+    },
+
+    /* 5 · Bóveda de Mediciones — puerta acorazada y serie de datos */
+    5:function(t,id){
+      var s = cielo(id,t) + duna(t.c1,118,.42) + duna(t.c2,132,.36);
+      s += '<g transform="translate(72,84)">'
+        +  '<rect x="-48" y="-42" width="96" height="84" rx="14" fill="url(#d'+id+')" opacity=".9"/>'
+        +  '<rect x="-48" y="-42" width="96" height="84" rx="14" fill="none" stroke="'+t.c3+'" stroke-opacity=".5" stroke-width="1.7"/>'
+        +  '<circle r="27" fill="#fffdf8" opacity=".95"/>'
+        +  '<circle r="27" fill="none" stroke="'+t.c3+'" stroke-width="2.2"/>'
+        +  '<circle r="9" fill="none" stroke="'+t.c3+'" stroke-width="2.2"/>';
+      for(var i=0;i<6;i++){
+        s += '<rect x="-1.7" y="-26" width="3.4" height="11" rx="1.7" fill="'+t.c3+'" transform="rotate('+(i*60)+')"/>';
+      }
+      s += '</g>';
+      var alt = [20,36,28,46,24,40];
+      for(var j=0;j<alt.length;j++){
+        s += '<rect x="'+(150+j*25)+'" y="'+(128-alt[j])+'" width="16" height="'+alt[j]+'" rx="4.5" fill="url(#e'+id+')" opacity="'+(0.55+j*0.07).toFixed(2)+'"/>';
+      }
+      return s + suelo(t);
+    },
+
+    /* 6 · Rally Algorítmico — pista, datos ordenados y meta */
+    6:function(t,id){
+      var s = cielo(id,t,250,34) + duna(t.c1,116,.42) + duna(t.c2,132,.36);
+      var pista = "M-8 142 C 66 122, 92 102, 172 96 S 282 78, 332 60";
+      s += '<path d="'+pista+'" fill="none" stroke="'+t.c3+'" stroke-opacity=".26" stroke-width="19" stroke-linecap="round"/>'
+        +  '<path d="'+pista+'" fill="none" stroke="#fffdf8" stroke-opacity=".8" stroke-width="2" stroke-dasharray="9 12" stroke-linecap="round"/>';
+      var alt = [13,21,29,37,45];
+      for(var i=0;i<alt.length;i++){
+        s += '<rect x="'+(26+i*17)+'" y="'+(92-alt[i])+'" width="11" height="'+alt[i]+'" rx="3.4" fill="url(#e'+id+')" opacity=".92"/>';
+      }
+      s += '<g transform="translate(244,30)"><path d="M0 0 V60" stroke="'+t.c3+'" stroke-width="3.2" stroke-linecap="round"/>';
+      for(var r=0;r<3;r++){
+        for(var c=0;c<4;c++){
+          s += '<rect x="'+(3+c*9)+'" y="'+(3+r*9)+'" width="9" height="9" fill="'+(((r+c)%2===0)? t.c3 : "#fffdf8")+'"/>';
+        }
+      }
+      s += '<rect x="3" y="3" width="36" height="27" fill="none" stroke="'+t.c3+'" stroke-width="1.2"/></g>';
+      return s + suelo(t);
+    },
+
+    /* 7 · EcoCiudad de Objetos — edificios con techo solar */
+    7:function(t,id){
+      var s = cielo(id,t,262,34) + duna(t.c1,122,.38) + duna(t.c2,134,.32);
+      var E = [[18,72,38],[64,52,32],[104,86,28],[140,60,42],[190,78,34],[232,66,28]];
+      for(var i=0;i<E.length;i++){
+        var x=E[i][0], y=E[i][1], w=E[i][2], h=136-y;
+        s += '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="6" fill="url(#d'+id+')" opacity="'+(0.74+i*0.04).toFixed(2)+'"/>'
+          +  '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="6" fill="none" stroke="'+t.c3+'" stroke-opacity=".36" stroke-width="1.1"/>'
+          +  '<rect x="'+(x+4)+'" y="'+(y-5)+'" width="'+(w-8)+'" height="5" rx="2.4" fill="'+t.c3+'" opacity=".6"/>';
+        var filas = Math.floor(h/17);
+        for(var f=0; f<filas; f++){
+          s += '<rect x="'+(x+8)+'" y="'+(y+11+f*17)+'" width="7" height="7" rx="1.8" fill="#fffdf8" opacity=".72"/>'
+            +  '<rect x="'+(x+w-15)+'" y="'+(y+11+f*17)+'" width="7" height="7" rx="1.8" fill="#fffdf8" opacity=".55"/>';
+        }
+      }
+      s += '<g transform="translate(284,110)">'
+        +  '<rect x="-2.2" y="0" width="4.4" height="26" rx="2.2" fill="'+t.c3+'" opacity=".8"/>'
+        +  '<circle cy="-9" r="13" fill="#43b888" opacity=".72"/>'
+        +  '<circle cx="-9" cy="1" r="9" fill="#43b888" opacity=".55"/>'
+        +  '<circle cx="9" cy="0" r="8" fill="#43b888" opacity=".62"/></g>';
+      return s + suelo(t);
+    },
+
+    /* 8 · Detectives del Código — lupa sobre el código sospechoso */
+    8:function(t,id){
+      var s = cielo(id,t,268,32) + duna(t.c1,120,.36) + duna(t.c2,134,.3);
+      s += '<g transform="translate(26,32)">'
+        +  '<rect x="0" y="0" width="152" height="98" rx="13" fill="#fffdf8" opacity=".96" stroke="'+t.c3+'" stroke-opacity=".34" stroke-width="1.5"/>';
+      var largos = [96,66,112,50,86,60];
+      for(var i=0;i<largos.length;i++){
+        var y = 16 + i*13.6, malo = (i===2);
+        s += '<rect x="15" y="'+y.toFixed(1)+'" width="7" height="6" rx="2" fill="'+t.c3+'" opacity=".45"/>'
+          +  '<rect x="28" y="'+y.toFixed(1)+'" width="'+largos[i]+'" height="6" rx="3" fill="'+(malo? "#c84f47" : t.c2)+'" opacity="'+(malo? ".82" : ".45")+'"/>';
+      }
+      s += '</g>';
+      s += '<g transform="translate(212,68)">'
+        +  '<circle r="40" fill="'+t.c1+'" opacity=".3"/>'
+        +  '<circle r="40" fill="none" stroke="'+t.c3+'" stroke-width="5.2"/>'
+        +  '<circle r="31" fill="#fffdf8" opacity=".3"/>'
+        +  '<path d="M28.5 28.5 L54 54" stroke="'+t.c3+'" stroke-width="8.4" stroke-linecap="round"/>'
+        +  '<path d="M-15 2 l9.5 9.5 l20 -21" fill="none" stroke="'+t.c3+'" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/></g>';
+      return s + suelo(t);
+    },
+
+    /* 9 · Guajira Energy Lab — laboratorio y clasificador visual */
+    9:function(t,id){
+      var s = cielo(id,t,272,30) + duna(t.c1,120,.38) + duna(t.c2,134,.32);
+      s += '<g transform="translate(44,40)">'
+        +  '<path d="M14 0 h22 v28 l24 48 a11 11 0 0 1 -10 16 h-50 a11 11 0 0 1 -10 -16 l24 -48 z" fill="#fffdf8" opacity=".93" stroke="'+t.c3+'" stroke-width="2.3" stroke-linejoin="round"/>'
+        +  '<path d="M2 62 h46 l12 14 a11 11 0 0 1 -10 16 h-50 a11 11 0 0 1 -10 -16 z" fill="url(#e'+id+')" opacity=".82"/>'
+        +  '<circle cx="14" cy="78" r="3.2" fill="#fffdf8" opacity=".8"/>'
+        +  '<circle cx="30" cy="72" r="2.3" fill="#fffdf8" opacity=".7"/>'
+        +  '<rect x="10" y="-5" width="30" height="6" rx="3" fill="'+t.c3+'" opacity=".8"/></g>';
+      var capas = [[3,170],[4,222],[2,272]], pos = [];
+      for(var l=0;l<capas.length;l++){
+        var k = capas[l][0], x = capas[l][1], col = [];
+        for(var i=0;i<k;i++){ col.push([x, 48 + (i + (4-k)/2) * 22]); }
+        pos.push(col);
+      }
+      for(var a=0;a<pos.length-1;a++){
+        for(var b=0;b<pos[a].length;b++){
+          for(var c=0;c<pos[a+1].length;c++){
+            s += '<path d="M'+pos[a][b][0]+' '+pos[a][b][1]+' L'+pos[a+1][c][0]+' '+pos[a+1][c][1]+'" stroke="'+t.c3+'" stroke-opacity=".24" stroke-width="1"/>';
+          }
+        }
+      }
+      for(var p=0;p<pos.length;p++){
+        for(var q=0;q<pos[p].length;q++){
+          s += '<circle cx="'+pos[p][q][0]+'" cy="'+pos[p][q][1]+'" r="6.8" fill="url(#e'+id+')" stroke="#fffdf8" stroke-width="1.7"/>';
+        }
+      }
+      return s + suelo(t);
+    }
+  };
+
+  function escena(n, t){
+    return '<svg viewBox="0 0 '+W+' '+H+'" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">'
+         + ESCENA[n](t, n) + '</svg>';
+  }
+
+  /* ═════════ Panorama de portada: las cuatro unidades en una franja ══ */
+  (function(){
+    var PW = 1100, PH = 236;
+    var s = '<svg viewBox="0 0 '+PW+' '+PH+'" aria-hidden="true" focusable="false">'
+      + '<defs>'
+      + '<linearGradient id="pc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dff2f4"/><stop offset=".55" stop-color="#f6f0e4"/><stop offset="1" stop-color="#fffdf8"/></linearGradient>'
+      + '<linearGradient id="ps" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe3a8"/><stop offset="1" stop-color="#f2b134"/></linearGradient>'
+      + '<linearGradient id="pa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9ae2e9"/><stop offset="1" stop-color="#0b7385"/></linearGradient>'
+      + '<linearGradient id="pb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9dfa8"/><stop offset="1" stop-color="#b8800f"/></linearGradient>'
+      + '<linearGradient id="pp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9bdf3"/><stop offset="1" stop-color="#5741ae"/></linearGradient>'
+      + '<linearGradient id="pv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#abe5cb"/><stop offset="1" stop-color="#2a8262"/></linearGradient>'
+      + '</defs>'
+      + '<rect width="'+PW+'" height="'+PH+'" fill="url(#pc)"/>'
+      + '<circle cx="550" cy="64" r="36" fill="url(#ps)" opacity=".9"/>'
+      + '<circle cx="550" cy="64" r="53" fill="none" stroke="#f2b134" stroke-opacity=".28" stroke-width="1.3"/>'
+      + '<circle cx="550" cy="64" r="70" fill="none" stroke="#f2b134" stroke-opacity=".15" stroke-width="1"/>'
+      + '<path d="M0 164 C 143 140, 231 178, 363 160 S 616 130, 770 162 S 990 182, 1100 154 L1100 236 L0 236 Z" fill="#c9bdf3" opacity=".26"/>'
+      + '<path d="M0 184 C 165 165, 286 200, 462 182 S 759 156, 913 189 S 1045 202, 1100 184 L1100 236 L0 236 Z" fill="#9ae2e9" opacity=".3"/>';
+
+    // 1 · paneles solares
+    for(var i=0;i<3;i++){
+      var x = 50 + i*72, y = 194 - i*8, w = 62 - i*6, h = 21 - i*2, dx = w*0.26;
+      s += '<g opacity="'+(0.95-i*0.12)+'">'
+        +  '<path d="M'+x+' '+y+' L'+(x+w)+' '+y+' L'+(x+w-dx).toFixed(1)+' '+(y-h)+' L'+(x+dx*0.2).toFixed(1)+' '+(y-h)+' Z" fill="url(#pa)"/>'
+        +  '<path d="M'+(x+w*0.52).toFixed(1)+' '+y+' l-2 12" stroke="#0b7385" stroke-width="3" stroke-linecap="round" opacity=".8"/></g>';
+    }
+    // 2 · aerogeneradores
+    var T = [[292,118,.94],[346,96,1.2],[394,126,.82]];
+    for(var j=0;j<T.length;j++){
+      var tx=T[j][0], ty=T[j][1], k=T[j][2];
+      s += '<g opacity="'+(0.78+j*0.07)+'">'
+        +  '<path d="M'+tx+' 204 L'+(tx-3.4*k).toFixed(1)+' '+ty+' h'+(6.8*k).toFixed(1)+' Z" fill="#0b7385"/>'
+        +  '<g transform="translate('+tx+','+ty+') scale('+k+')">'
+        +    '<path d="M0 0 L2.4 -30 L-2.4 -30 Z" fill="url(#pa)"/>'
+        +    '<path d="M0 0 L27 13.5 L24 18 Z" fill="url(#pa)"/>'
+        +    '<path d="M0 0 L-27 13.5 L-24 18 Z" fill="url(#pa)"/>'
+        +    '<circle r="3.4" fill="#fffdf8" stroke="#0b7385" stroke-width="1.4"/></g></g>';
+    }
+    // 3 · módulos de la fábrica
+    var B = [[468,166],[510,150],[552,174],[594,158]];
+    for(var m=0;m<B.length;m++){
+      s += '<rect x="'+B[m][0]+'" y="'+B[m][1]+'" width="34" height="'+(206-B[m][1])+'" rx="8" fill="url(#pb)" opacity=".9"/>'
+        +  '<circle cx="'+(B[m][0]+17)+'" cy="'+(B[m][1]+14)+'" r="5.4" fill="#fffdf8" opacity=".88"/>';
+    }
+    // 4 · ciudad
+    var E = [[664,146,32],[704,124,28],[740,160,26],[772,132,36],[816,152,30]];
+    for(var e=0;e<E.length;e++){
+      var ex=E[e][0], ey=E[e][1], ew=E[e][2];
+      s += '<rect x="'+ex+'" y="'+ey+'" width="'+ew+'" height="'+(208-ey)+'" rx="5" fill="url(#pp)" opacity="'+(0.72+e*0.05).toFixed(2)+'"/>'
+        +  '<rect x="'+(ex+3)+'" y="'+(ey-4)+'" width="'+(ew-6)+'" height="4" rx="2" fill="#5741ae" opacity=".6"/>';
+      var filas = Math.floor((208-ey)/17);
+      for(var f=0; f<filas; f++){
+        s += '<rect x="'+(ex+6)+'" y="'+(ey+10+f*17)+'" width="6" height="6" rx="1.6" fill="#fffdf8" opacity=".7"/>'
+          +  '<rect x="'+(ex+ew-12)+'" y="'+(ey+10+f*17)+'" width="6" height="6" rx="1.6" fill="#fffdf8" opacity=".5"/>';
+      }
+    }
+    // 5 · red neuronal
+    var capas = [[3,912],[4,978],[2,1044]], pos = [];
+    for(var l=0;l<capas.length;l++){
+      var kk = capas[l][0], cx = capas[l][1], col = [];
+      for(var q=0;q<kk;q++){ col.push([cx, 122 + (q + (4-kk)/2) * 25]); }
+      pos.push(col);
+    }
+    for(var a=0;a<pos.length-1;a++){
+      for(var b=0;b<pos[a].length;b++){
+        for(var c=0;c<pos[a+1].length;c++){
+          s += '<path d="M'+pos[a][b][0]+' '+pos[a][b][1]+' L'+pos[a+1][c][0]+' '+pos[a+1][c][1]+'" stroke="#2a8262" stroke-opacity=".26" stroke-width="1"/>';
+        }
+      }
+    }
+    for(var p=0;p<pos.length;p++){
+      for(var r=0;r<pos[p].length;r++){
+        s += '<circle cx="'+pos[p][r][0]+'" cy="'+pos[p][r][1]+'" r="7.6" fill="url(#pv)" stroke="#fffdf8" stroke-width="1.8"/>';
+      }
+    }
+    s += '<path d="M0 208 C 198 195, 352 219, 572 208 S 902 193, 1100 213 L1100 236 L0 236 Z" fill="#f9dfa8" opacity=".5"/>'
+      +  '<path d="M0 226 H1100" stroke="#b8800f" stroke-opacity=".2" stroke-width="1.4"/>'
+      +  '</svg>';
+    document.getElementById("panorama").innerHTML = s;
+  })();
+
+  /* ═════════════════════════════════════════ 4 · PROGRESO REAL
+     Cada misión guarda su estado con su propia clave. Al compartir origen,
+     esta página puede leerlas; nunca las escribe. */
+  var almacenOK = (function(){
+    try{ localStorage.setItem("__ea__","1"); localStorage.removeItem("__ea__"); return true; }
+    catch(e){ return false; }
+  })();
+
+  function avance(m){
+    var hechos = [false,false,false,false,false], actual = 1, n = 0;
+    if(almacenOK){
+      try{
+        var d = JSON.parse(localStorage.getItem(m.clave) || "null");
+        if(d && typeof d === "object"){
+          var c = d.completed;
+          if(c && typeof c === "object"){
+            for(var i=1;i<=5;i++){ if(c[i] === true || c[String(i)] === true) hechos[i-1] = true; }
+          }
+          if(typeof d.current === "number" && d.current >= 1 && d.current <= 5) actual = d.current;
+        }
+      }catch(e){}
+    }
+    for(var j=0;j<5;j++){ if(hechos[j]) n++; }
+    return { hechos:hechos, actual:actual, n:n, lista:(n === 5) };
+  }
+
+  /* ═════════════════════════════════════════ 5 · DIBUJADO */
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c];
+    });
+  }
+  var CHECK  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.6l4.4 4.4L19 6.6"></path></svg>';
+  var FLECHA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.8 12h13.6"></path><path d="M12.8 6.4L18.4 12l-5.6 5.6"></path></svg>';
+
+  var nivelesHechos = 0, misionesHechas = 0;
+
+  document.getElementById("rejilla").innerHTML = M.map(function(m){
+    var t = TONOS[m.u], a = avance(m);
+    nivelesHechos += a.n;
+    if(a.lista) misionesHechas++;
+
+    var estado = a.lista ? "Completada" : (a.n > 0 ? "Nivel " + Math.min(a.actual,5) + " de 5" : "Sin empezar");
+    var accion = a.lista ? "Repasar"    : (a.n > 0 ? "Continuar" : "Abrir");
+    var clase  = a.lista ? "lista"      : (a.n > 0 ? "curso" : "");
+    var tramos = "";
+    for(var i=0;i<5;i++){
+      var c = a.hechos[i] ? "tramo hecho" : (((i+1) === a.actual && a.n > 0) ? "tramo actual" : "tramo");
+      tramos += '<span class="' + c + '"><i style="transition-delay:' + (i*70) + 'ms"></i></span>';
+    }
+    var estilo = "--tono:" + t.base + ";--tono-osc:" + t.osc + ";--tono-suave:" + t.suave
+               + ";--tono-halo:" + t.halo + ";--tono-borde:" + t.borde + ";--tono-cielo:" + t.cielo;
+
+    return '<li class="mision" style="' + estilo + '">'
+      + '<a class="carta ' + clase + '" href="' + esc(m.archivo) + '" '
+      +    'aria-label="' + esc(m.nombre) + '. ' + esc(m.lema) + '. ' + esc(m.sello) + '. ' + estado + '.">'
+      +   '<span class="escena">' + escena(m.n, t) + '</span>'
+      +   '<span class="laurel" aria-hidden="true">' + CHECK + 'Insignia</span>'
+      +   '<div class="cuerpo">'
+      +     '<h2>' + esc(m.nombre) + '</h2>'
+      +     '<p class="lema">' + esc(m.lema) + '</p>'
+      +     '<span class="sello">' + esc(m.sello) + '</span>'
+      +   '</div>'
+      +   '<div class="pie">'
+      +     '<div class="tramos" role="img" aria-label="' + a.n + ' de 5 niveles superados">' + tramos + '</div>'
+      +     '<div class="estado"><span class="txt">' + estado + '</span><span class="ir">' + accion + FLECHA + '</span></div>'
+      +   '</div>'
+      + '</a></li>';
+  }).join("");
+
+  /* ═════════════════════════════════════════ 6 · PANEL DE AVANCE */
+  (function(){
+    var pct = Math.round(nivelesHechos / 45 * 100);
+    var C = 2 * Math.PI * 52;
+    var aro = document.getElementById("aro");
+    aro.setAttribute("stroke-dasharray", C.toFixed(1));
+    document.getElementById("pct").textContent = pct + " %";
+    document.getElementById("vNiv").textContent = nivelesHechos + " / 45";
+    document.getElementById("vMis").textContent = misionesHechas + " / 9";
+
+    document.getElementById("pasaporte").innerHTML = M.map(function(m){
+      var a = avance(m);
+      return '<li class="marca ' + (a.lista ? "ganada" : "") + '" style="--m:' + TONOS[m.u].osc + '" '
+           + 'title="' + esc(m.nombre) + (a.lista ? " · insignia obtenida" : " · pendiente") + '">'
+           + (a.lista ? CHECK : '<span class="punto" aria-hidden="true"></span>')
+           + '<span class="oculto">' + esc(m.nombre) + (a.lista ? ", insignia obtenida" : ", pendiente") + '</span></li>';
+    }).join("");
+
+    // Las barras arrancan en cero y se llenan: el movimiento hace legible el dato.
+    window.setTimeout(function(){
+      aro.style.strokeDashoffset = (C * (1 - nivelesHechos / 45)).toFixed(1);
+      document.getElementById("bNiv").style.width = pct + "%";
+      document.getElementById("bMis").style.width = Math.round(misionesHechas / 9 * 100) + "%";
+    }, 220);
+  })();
+
+  /* ═════════════════════════════════════════ 7 · ENTRADA ESCALONADA */
+  var tarjetas = document.querySelectorAll(".mision");
+  function mostrar(t, i){
+    t.style.transitionDelay = ((i % 3) * 90) + "ms";
+    t.classList.add("entra");
+  }
+  if(!("IntersectionObserver" in window)){
+    Array.prototype.forEach.call(tarjetas, mostrar);
+  }else{
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if(!e.isIntersecting) return;
+        mostrar(e.target, Array.prototype.indexOf.call(tarjetas, e.target));
+        obs.unobserve(e.target);
+      });
+    }, { rootMargin:"0px 0px -50px 0px", threshold:.1 });
+    Array.prototype.forEach.call(tarjetas, function(t){ obs.observe(t); });
+  }
+})();
+</script>
+</body>
+</html>
